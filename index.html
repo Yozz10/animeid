@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Anime Saya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="user-profile">
+            <img src="https://i.pravatar.cc/150?img=12" alt="Avatar Pengguna">
+            <div class="user-info">
+                <strong>Riyo AE</strong>
+                <span>Level 1356 ( 27% )</span>
+            </div>
+        </div>
+        <div class="premium-banner">
+            <i class="fas fa-crown"></i>
+            <span><strong>Premium</strong> - Mulai Rp. 12.000</span>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Anime Unggulan -->
+        <section id="featured-anime" class="featured-anime">
+            <div class="skeleton-loader large"></div>
+        </section>
+
+        <!-- Pencarian -->
+        <section class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="Cari Anime Di Sini">
+        </section>
+
+        <!-- Terakhir Ditonton -->
+        <section class="last-watched">
+            <img src="https://media.kitsu.io/anime/poster_images/6547/small.jpg" alt="Danshi Koukousei">
+            <div class="last-watched-info">
+                <span>Terakhir Ditonton</span>
+                <strong>Danshi Koukousei no Nichijou</strong>
+            </div>
+            <button class="play-button">
+                <i class="fas fa-play"></i>
+            </button>
+        </section>
+
+        <!-- Daftar Anime -->
+        <section class="anime-section">
+            <h2>New Update Anime</h2>
+            <div class="anime-grid" id="anime-grid">
+                <div class="skeleton-loader small"></div>
+                <div class="skeleton-loader small"></div>
+                <div class="skeleton-loader small"></div>
+            </div>
+        </section>
+
+        <!-- Daftar Episode -->
+        <section class="episode-section">
+            <h2>Daftar Episode</h2>
+            <div id="episode-list" class="episode-grid"></div>
+        </section>
+    </main>
+
+    <!-- Navigasi Bawah -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-clock"></i>
+            <span>History</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-play-circle"></i>
+            <span>Nonton</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profil</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
