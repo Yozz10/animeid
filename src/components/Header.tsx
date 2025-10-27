@@ -3,13 +3,15 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import ThemeToggle from './ThemeToggle'
+import { useUser } from '../context/UserContext'
 
 export default function Header() {
   const [query, setQuery] = useState('')
+  const { user, logout } = useUser()
 
   return (
     <header className="flex items-center justify-between p-4 bg-pink-100 dark:bg-gray-900 shadow-md">
-      <Link href="/" className="text-2xl font-bold text-sakura-600 dark:text-pink-300">
+      <Link href="/" className="text-2xl font-bold text-pink-600 dark:text-pink-300">
         🌸 AniStream
       </Link>
 
@@ -27,8 +29,25 @@ export default function Header() {
         >
           🔍
         </Link>
-
         <ThemeToggle />
+        {user ? (
+          <div className="flex items-center gap-2">
+            <span className="text-sm dark:text-white">Hi, {user}</span>
+            <button
+              onClick={logout}
+              className="text-sm text-pink-600 dark:text-pink-300 underline"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link
+            href="/login"
+            className="text-sm bg-pink-400 text-white px-2 py-1 rounded-lg hover:bg-pink-500"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </header>
   )
