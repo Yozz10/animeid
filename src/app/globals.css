@@ -2,77 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 🌸 Global Reset & Theme */
-:root {
-  --background: #f9f9fb;
-  --foreground: #111;
-  --primary: #ec4899;
-  --secondary: #9333ea;
-  --card-bg: #fff;
-  --radius: 1rem;
-}
-
-html,
-body {
+/* 🌸 Warna tema utama */
+html, body {
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden; /* Hilangkan garis putih samping */
+  font-family: 'Inter', sans-serif;
+  background-color: #ffebf0; /* Pink muda lembut */
+  color: #3d3d3d;
 }
 
-/* 🧱 Card Style */
+/* Container utama */
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Kartu anime */
 .card {
-  @apply rounded-2xl shadow-md overflow-hidden transition-transform duration-300;
+  background-color: #ffd6e0; /* Pink pastel */
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
 }
+
 .card:hover {
-  @apply scale-105 shadow-lg;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(255, 105, 180, 0.4);
 }
 
-/* 🩷 Buttons */
-.btn {
-  @apply px-4 py-2 rounded-full font-medium transition-colors duration-300;
-}
-.btn-primary {
-  @apply bg-pink-600 text-white hover:bg-pink-700;
-}
-.btn-secondary {
-  @apply bg-purple-600 text-white hover:bg-purple-700;
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
-/* 🧭 Navbar Style */
-.navbar {
-  @apply flex items-center justify-between px-4 py-3 bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm;
+.card-content {
+  padding: 1rem;
+  background-color: #fff0f6;
 }
 
-/* 🎴 Anime Grid */
-.anime-grid {
-  @apply grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #d63384;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* 🔍 Search Input */
-.search-input {
-  @apply w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500;
+.card-score {
+  font-size: 0.875rem;
+  color: #ff66b2;
 }
 
-/* 🧍 Login & Modal */
-.modal-bg {
-  @apply fixed inset-0 bg-black/60 flex items-center justify-center z-50;
+/* Tombol & input */
+input, button {
+  font-family: 'Inter', sans-serif;
 }
+
+input {
+  background-color: #fff0f6;
+  border: 2px solid #ff99cc;
+  color: #4a4a4a;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #ff66b2;
+  box-shadow: 0 0 0 3px rgba(255, 102, 178, 0.3);
+}
+
+button {
+  background-color: #ff66b2;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-weight: 600;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff3385;
+}
+
+/* Header */
+h1, h2, h3, h4 {
+  color: #ff4da6;
+}
+
+/* Modal */
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 .modal-content {
-  @apply bg-white rounded-2xl p-6 shadow-lg w-11/12 sm:w-96;
+  background-color: #fff0f6;
+  color: #3d3d3d;
+  border: 2px solid #ffb3d9;
+  border-radius: 1rem;
 }
 
-/* ⚙️ Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.modal-close {
+  color: #d63384;
 }
-::-webkit-scrollbar-thumb {
-  background: #ec4899;
+
+.modal-close:hover {
+  color: #ff3399;
+}
+
+/* Tag */
+.tag {
+  background-color: #ff66b2;
+  color: white;
+  padding: 0.3rem 0.8rem;
   border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 0.25rem;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #db2777;
+
+/* Pastikan box-sizing seragam */
+* {
+  box-sizing: border-box;
 }
