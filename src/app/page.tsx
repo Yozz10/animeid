@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link"; // ✅ Tambahkan ini
 
 export default function HomePage() {
   const [animes, setAnimes] = useState<any[]>([]);
@@ -38,7 +39,8 @@ export default function HomePage() {
         <>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {animes.slice(0, visible).map((anime) => (
-              <div
+              <Link
+                href={`/anime/${anime.mal_id}`} // ✅ Ganti href → Link
                 key={anime.mal_id}
                 className="anime-card bg-white rounded-2xl shadow-md hover:shadow-pink-200 transition hover:-translate-y-1 border border-pink-100 overflow-hidden"
               >
@@ -54,14 +56,11 @@ export default function HomePage() {
                   <p className="text-sm text-pink-500">
                     ⭐ {anime.score || "N/A"}
                   </p>
-                  <a
-                    href={`/anime/${anime.mal_id}`}
-                    className="inline-block mt-2 bg-pink-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-pink-600 transition"
-                  >
+                  <span className="inline-block mt-2 bg-pink-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-pink-600 transition">
                     Lihat Detail
-                  </a>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 
