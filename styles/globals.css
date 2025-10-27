@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Layout Base === */
+html, body, #__next {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* === Warna Tema Utama === */
+:root {
+  --sakura: #ec4899; /* Warna pink utama */
+}
+
+/* === Background khusus === */
+.bg-offwhite {
+  background-color: #fbfafc;
+}
+
+/* === Dark Mode === */
+.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+.dark .bg-offwhite {
+  background-color: #1f2937;
+}
+
+/* === Komponen umum === */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* === Animasi untuk komentar === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comment {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* === Scrollbar Styling (biar cantik di HP dan PC) === */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ec4899;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #fce7f3;
+}
+
+/* === Text Selections (highlight warna pink) === */
+::selection {
+  background: #ec4899;
+  color: white;
+}
