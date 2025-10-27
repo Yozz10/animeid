@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #__next { height: 100%; }
+
+/* small tweak for theme */
+.bg-offwhite { background-color: #fbfafc; }
+
+/* ensure images don't break */
+img { display: block; max-width: 100%; height: auto; }
