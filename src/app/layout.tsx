@@ -1,21 +1,20 @@
 import "../styles/globals.css"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import { UserProvider } from '../context/UserContext'
+import Header from '../components/Header'
 
 export const metadata = {
-  title: 'AnimeStream - Stage 1',
-  description: 'Web anime streaming (scaffold)'
+  title: 'AniStream',
+  description: 'Nonton anime favoritmu dengan gaya pink putih!',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id">
-      <body className="bg-offwhite text-gray-800 antialiased">
-        <div className="min-h-screen flex flex-col">
+      <body className="bg-pink-50 dark:bg-gray-900">
+        <UserProvider>
           <Header />
-          <main className="flex-1 container mx-auto px-4 py-8">{children}</main>
-          <Footer />
-        </div>
+          <main className="max-w-6xl mx-auto p-4">{children}</main>
+        </UserProvider>
       </body>
     </html>
   )
