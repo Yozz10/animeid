@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌸 Global Reset & Theme */
+:root {
+  --background: #f9f9fb;
+  --foreground: #111;
+  --primary: #ec4899;
+  --secondary: #9333ea;
+  --card-bg: #fff;
+  --radius: 1rem;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* 🧱 Card Style */
+.card {
+  @apply rounded-2xl shadow-md overflow-hidden transition-transform duration-300;
+}
+.card:hover {
+  @apply scale-105 shadow-lg;
+}
+
+/* 🩷 Buttons */
+.btn {
+  @apply px-4 py-2 rounded-full font-medium transition-colors duration-300;
+}
+.btn-primary {
+  @apply bg-pink-600 text-white hover:bg-pink-700;
+}
+.btn-secondary {
+  @apply bg-purple-600 text-white hover:bg-purple-700;
+}
+
+/* 🧭 Navbar Style */
+.navbar {
+  @apply flex items-center justify-between px-4 py-3 bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm;
+}
+
+/* 🎴 Anime Grid */
+.anime-grid {
+  @apply grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+}
+
+/* 🔍 Search Input */
+.search-input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500;
+}
+
+/* 🧍 Login & Modal */
+.modal-bg {
+  @apply fixed inset-0 bg-black/60 flex items-center justify-center z-50;
+}
+.modal-content {
+  @apply bg-white rounded-2xl p-6 shadow-lg w-11/12 sm:w-96;
+}
+
+/* ⚙️ Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ec4899;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #db2777;
+}
