@@ -1,73 +1,80 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [animeList, setAnimeList] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredList, setFilteredList] = useState([]);
+export default function HomePage() {
+  const [animes, setAnimes] = useState<any[]>([]);
+  const [visible, setVisible] = useState(12);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchTopAnime = async () => {
+    async function fetchAnime() {
       try {
-        const response = await axios.get("https://api.jikan.moe/v4/top/anime");
-        setAnimeList(response.data.data);
-        setFilteredList(response.data.data);
+        const res = await fetch("https://api.jikan.moe/v4/top/anime?limit=24");
+        const data = await res.json();
+        setAnimes(data.data);
       } catch (error) {
-        console.error("Error fetching anime:", error);
+        console.error("Gagal mengambil data anime:", error);
+      } finally {
+        setLoading(false);
       }
-    };
-
-    fetchTopAnime();
+    }
+    fetchAnime();
   }, []);
 
-  useEffect(() => {
-    if (searchTerm.trim() === "") {
-      setFilteredList(animeList);
-    } else {
-      const filtered = animeList.filter((anime: any) =>
-        anime.title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredList(filtered);
-    }
-  }, [searchTerm, animeList]);
+  const showMore = () => {
+    setVisible((prev) => prev + 6);
+  };
 
   return (
-    <main className="min-h-screen bg-pink-50 p-4">
-      <h1 className="text-3xl font-bold text-pink-600 mb-6 text-center">
-        Top Anime
+    <div className="text-center">
+      <h1 className="text-3xl font-bold text-pink-600 mb-6">
+        🌸 AnimeID — Top Anime Pilihan
       </h1>
 
-      {/* 🔍 Search Bar */}
-      <div className="flex justify-center mb-8">
-        <input
-          type="text"
-          placeholder="Search anime..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full max-w-md p-2 border border-pink-300 rounded-xl shadow-sm focus:ring-2 focus:ring-pink-400 focus:outline-none"
-        />
-      </div>
-
-      {/* 🖼️ Anime Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {filteredList.map((anime: any) => (
-          <div
-            key={anime.mal_id}
-            className="bg-pink-100 rounded-2xl p-2 shadow hover:shadow-md transition cursor-pointer"
-          >
-            <img
-              src={anime.images.jpg.image_url}
-              alt={anime.title}
-              className="rounded-xl w-full object-cover"
-            />
-            <p className="text-sm font-semibold mt-2 text-center text-gray-800">
-              {anime.title}
-            </p>
+      {loading ? (
+        <p className="text-pink-500 animate-pulse">⏳ Memuat daftar anime...</p>
+      ) : (
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {animes.slice(0, visible).map((anime) => (
+              <div
+                key={anime.mal_id}
+                className="anime-card bg-white rounded-2xl shadow-md hover:shadow-pink-200 transition hover:-translate-y-1 border border-pink-100 overflow-hidden"
+              >
+                <img
+                  src={anime.images?.jpg?.image_url}
+                  alt={anime.title}
+                  className="rounded-t-2xl w-full object-cover"
+                />
+                <div className="p-3">
+                  <h2 className="text-base font-semibold text-gray-800 truncate">
+                    {anime.title}
+                  </h2>
+                  <p className="text-sm text-pink-500">
+                    ⭐ {anime.score || "N/A"}
+                  </p>
+                  <a
+                    href={`/anime/${anime.mal_id}`}
+                    className="inline-block mt-2 bg-pink-500 text-white px-3 py-1 rounded-lg text-sm hover:bg-pink-600 transition"
+                  >
+                    Lihat Detail
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </main>
+
+          {visible < animes.length && (
+            <button
+              onClick={showMore}
+              className="mt-6 bg-pink-500 text-white px-6 py-2 rounded-xl shadow hover:bg-pink-600 transition"
+            >
+              Tampilkan Lebih Banyak 🌸
+            </button>
+          )}
+        </>
+      )}
+    </div>
   );
 }
