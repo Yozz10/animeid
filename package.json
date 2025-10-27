@@ -10,7 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.20",
+    "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "axios": "^1.7.2",
     "next": "14.1.0",
