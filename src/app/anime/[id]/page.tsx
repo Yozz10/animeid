@@ -1,6 +1,7 @@
 import { fetchJikan } from '../../../lib/api'
 import Trailer from '../../../components/Trailer'
 import InfoBlock from '../../../components/InfoBlock'
+import CommentSection from '../../../components/CommentSection' // 🩷 Tambahan
 
 export default async function AnimeDetail({ params }: { params: { id: string } }) {
   const data = await fetchJikan(`/anime/${params.id}`)
@@ -33,6 +34,9 @@ export default async function AnimeDetail({ params }: { params: { id: string } }
       >
         🎬 Tonton Sekarang
       </a>
+
+      {/* 🩷 Tambahkan komentar & rating di bawah */}
+      <CommentSection animeId={anime.mal_id.toString()} />
     </div>
   )
 }
