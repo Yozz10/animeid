@@ -2,10 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #__next { height: 100%; }
+html {
+  scroll-behavior: smooth;
+}
 
-/* small tweak for theme */
-.bg-offwhite { background-color: #fbfafc; }
+:root {
+  --sakura: #ec4899;
+}
 
-/* ensure images don't break */
-img { display: block; max-width: 100%; height: auto; }
+.dark {
+  background-color: #111827;
+  color: #f9fafb;
+}
